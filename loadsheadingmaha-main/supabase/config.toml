@@ -1,0 +1,4 @@
+project_id = "kehozfrjsmjjlytknltt"
+
+[functions.outage-risk]
+verify_jwt = false

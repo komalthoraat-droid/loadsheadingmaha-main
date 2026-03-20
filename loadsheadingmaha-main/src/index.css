@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mahavitaran Rural Load Shedding - Design System
+   Rural-first, high contrast, accessible design
+   Inspired by Indian government portals
+*/
+
+@layer base {
+  :root {
+    /* Core background - clean white for readability */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 15%;
+
+    /* Card surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    /* Popover surfaces */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    /* Primary - Saffron/Orange (electricity, energy, Indian govt) */
+    --primary: 25 95% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Deep blue (trust, reliability) */
+    --secondary: 215 80% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - Subtle gray backgrounds */
+    --muted: 40 20% 96%;
+    --muted-foreground: 220 10% 40%;
+
+    /* Accent - Light saffron tint */
+    --accent: 35 100% 95%;
+    --accent-foreground: 25 95% 35%;
+
+    /* Status colors - HIGH CONTRAST for rural visibility */
+    --success: 145 70% 35%;
+    --success-foreground: 0 0% 100%;
+    --danger: 0 75% 50%;
+    --danger-foreground: 0 0% 100%;
+    --warning: 45 100% 50%;
+    --warning-foreground: 220 20% 15%;
+
+    /* Destructive */
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 220 15% 85%;
+    --input: 220 15% 90%;
+    --ring: 25 95% 50%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar (for engineer dashboard) */
+    --sidebar-background: 215 80% 25%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 25 95% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 70% 35%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 215 60% 40%;
+    --sidebar-ring: 25 95% 55%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 40 20% 95%;
+    --card: 220 20% 12%;
+    --card-foreground: 40 20% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 40 20% 95%;
+    --primary: 25 95% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 25 50% 20%;
+    --accent-foreground: 25 95% 70%;
+    --success: 145 60% 45%;
+    --success-foreground: 0 0% 100%;
+    --danger: 0 70% 55%;
+    --danger-foreground: 0 0% 100%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 25%;
+    --input: 220 15% 25%;
+    --ring: 25 95% 55%;
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 25 95% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 25 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Noto Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: 18px; /* Larger base for rural accessibility */
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  /* Large touch-friendly button */
+  .btn-large {
+    @apply px-8 py-4 text-lg font-semibold rounded-xl min-h-[56px] touch-manipulation;
+  }
+
+  /* Status badges */
+  .status-power-on {
+    @apply bg-success text-success-foreground px-6 py-3 rounded-xl font-bold text-xl;
+  }
+
+  .status-power-off {
+    @apply bg-danger text-danger-foreground px-6 py-3 rounded-xl font-bold text-xl;
+  }
+
+  /* Card with government-style header */
+  .govt-card {
+    @apply bg-card rounded-2xl border-2 border-border shadow-lg overflow-hidden;
+  }
+
+  .govt-card-header {
+    @apply bg-secondary text-secondary-foreground px-6 py-4 font-bold text-xl;
+  }
+
+  /* Large dropdown for touch */
+  .dropdown-large {
+    @apply w-full min-h-[56px] text-lg px-4 rounded-xl border-2 border-border bg-card;
+  }
+
+  /* Customer care banner */
+  .care-banner {
+    @apply bg-accent border-2 border-primary/30 rounded-xl px-6 py-4 text-center;
+  }
+
+  /* Time display */
+  .time-display {
+    @apply text-3xl md:text-4xl font-bold text-primary;
+  }
+
+  /* Info section */
+  .info-section {
+    @apply bg-muted rounded-xl p-6 border border-border;
+  }
+}
+
+@layer utilities {
+  /* High contrast focus for accessibility */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  /* Touch-friendly sizing */
+  .touch-target {
+    @apply min-h-[48px] min-w-[48px];
+  }
+}
